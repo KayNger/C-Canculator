@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("test");
-    }
+        String input = Calculator.readFromInputStream("input.txt");
+        String[] delimiters = new String[]{"'"};
 }
