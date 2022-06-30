@@ -52,7 +52,7 @@ public class Calculator {
                 sb.setLength(0);
                 i = i + delimiterLength - 1;
             } else {
-                if (i == input.length() -1 && != sb.toString().isEmpty()) {
+                if (i == input.length() -1 && !sb.toString().isEmpty()) {
                     arrString.add(sb.toString());
                 } else {
                     sb.append(c);
@@ -61,7 +61,7 @@ public class Calculator {
         }
 
         for (String s : arrString) {
-            for (Integer i : findNumber(s)) {
+            for (Integer i : findNumbers(s)) {
                 if (i > 1000) i = 0;
                 else if (i < 0) {
                     throw new Exception("include all of the negative number provided");
@@ -70,6 +70,8 @@ public class Calculator {
             }
         }
     }
+
+
 
     private static List<Integer> findNumbers(String stringToSearch) {
         Pattern integerPattern = Pattern.compile("-?\\d+");
