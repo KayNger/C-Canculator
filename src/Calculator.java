@@ -1,6 +1,10 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -65,6 +69,22 @@ public class Calculator {
                 arr.add(i);
             }
         }
+    }
+
+    private static List<Integer> findNumbers(String stringToSearch) {
+        Pattern integerPattern = Pattern.compile("-?\\d+");
+        Matcher matcher = integerPattern.matcher(stringToSearch);
+
+        ArrayList<String> integerList = new ArrayList<>();
+        while (matcher.find()) {
+            integerList.add(matcher.group());
+        }
+        List<Integer> arrInteger = new ArrayList<>();
+        for (String s : integerList) {
+            arrInteger.add(Integer.parseInt(s));
+        }
+
+        return arrInteger;
     }
 
     private static int isDelimiter(String input, String[] delimiters, int i) {
