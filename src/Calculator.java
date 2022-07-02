@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    static ArrayList<Integer> arr = new ArrayList<>();
+     static ArrayList<Integer> arr = new ArrayList<>();
 
     public static String readFromInputStream(String path) {
         try {
@@ -20,7 +20,7 @@ public class Calculator {
                 while ((line = br.readLine()) != null) {
                     resultStringBuilder.append(line).append("\n");
                 }
-           }
+            }
             return resultStringBuilder.toString();
         } catch (Exception e) {
             e.toString();
@@ -28,7 +28,8 @@ public class Calculator {
         return "";
     }
 
-    public static int calculate(String input,String[] delimiters) throws Exception {
+
+    public static int calculate(String input, String[] delimiters) {
         handleCharacter(input, delimiters);
         try {
             if (arr.stream().count() == 0) {
@@ -41,7 +42,7 @@ public class Calculator {
         }
     }
 
-    public static void handleCharacter(String input, String[] delimiters) throws Exception {
+    private static void handleCharacter(String input, String[] delimiters) {
         ArrayList<String> arrString = new ArrayList<>();
         StringBuilder sb = new StringBuilder(input.length());
         for (int i = 0; i < input.length(); i++) {
@@ -52,31 +53,27 @@ public class Calculator {
                 sb.setLength(0);
                 i = i + delimiterLength - 1;
             } else {
-                if (i == input.length() -1 && !sb.toString().isEmpty()) {
+                if (i = input.length() - 1 && ! sb.toString().isEmpty()) {
                     arrString.add(sb.toString());
                 } else {
                     sb.append(c);
                 }
             }
         }
-
         for (String s : arrString) {
-            for (Integer i : findNumbers(s)) {
+            for (Integer i : findNumber(s)) {
                 if (i > 1000) i = 0;
                 else if (i < 0) {
-                    throw new Exception("include all of the negative number provided");
+                    throw new Exception("includes all of the negative numbers provided");
                 }
                 arr.add(i);
             }
         }
     }
 
-
-
-    private static List<Integer> findNumbers(String stringToSearch) {
+    private static List<Integer> findNumber(String stringToSearch) {
         Pattern integerPattern = Pattern.compile("-?\\d+");
         Matcher matcher = integerPattern.matcher(stringToSearch);
-
         ArrayList<String> integerList = new ArrayList<>();
         while (matcher.find()) {
             integerList.add(matcher.group());
@@ -85,32 +82,23 @@ public class Calculator {
         for (String s : integerList) {
             arrInteger.add(Integer.parseInt(s));
         }
-
         return arrInteger;
     }
 
-    private static int isDelimiter(String input, String[] delimiters, int i) {
-        for (String delimiter : delimiters) {
-            int deLength = isDelimiter(input, delimiters, i);
-            if (deLength > 0)
-                return deLength;
-        }
-        return 0;
-    }
 
-    private static int isDelimiter(String input, String delimiter, int i) {
-        if (delimiter.length() > input.length() - i) {
+    private static int isDelimiter(String input, String delimiters, int i) {
+        if (delimiters.length() > input.length() - i) {
             return 0;
         }
         int index = 0;
         for (int j = i; j < input.length(); j++) {
-            if (input.charAt(j) != delimiter.charAt(index))
+            if (input.charAt(j) != delimiters.charAt(index))
                 return 0;
             index++;
-            if (delimiter.length() == index)
-                return delimiter.length();
+            if (delimiters.length() == index)
+                return delimiters.length();
         }
-        return delimiter.length();
+        return delimiters.length();
     }
 
 }
