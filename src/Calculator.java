@@ -47,7 +47,7 @@ public class Calculator {
         ArrayList<String> arrString = new ArrayList<>();
         StringBuilder sb = new StringBuilder(input.length());
         for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
+                char c = input.charAt(i);
             int delimiterLength = isDelimiter(input, Arrays.toString(delimiters), i);
             if (delimiterLength > 0) {
                 arrString.add(sb.toString());
@@ -86,7 +86,14 @@ public class Calculator {
         return arrInteger;
     }
 
-
+    private static int isDelimiter(String input, String[] delimiters, int i) {
+        for (String delimiter : delimiters) {
+            int deLength = isDelimiter(input, delimiter, i);
+            if (deLength > 0)
+                return deLength;
+        }
+        return 0;
+    }
     private static int isDelimiter(String input, String delimiters, int i) {
         if (delimiters.length() > input.length() - i) {
             return 0;
