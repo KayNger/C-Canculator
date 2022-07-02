@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,13 +48,13 @@ public class Calculator {
         StringBuilder sb = new StringBuilder(input.length());
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-            int delimiterLength = isDelimiter(input, delimiters, i);
+            int delimiterLength = isDelimiter(input, Arrays.toString(delimiters), i);
             if (delimiterLength > 0) {
                 arrString.add(sb.toString());
                 sb.setLength(0);
                 i = i + delimiterLength - 1;
             } else {
-                if (i = input.length() - 1 && ! sb.toString().isEmpty()) {
+                if (i = input.length() - 1 && !sb.toString().isEmpty()) {
                     arrString.add(sb.toString());
                 } else {
                     sb.append(c);
