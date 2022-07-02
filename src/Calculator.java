@@ -54,7 +54,7 @@ public class Calculator {
                 sb.setLength(0);
                 i = i + delimiterLength - 1;
             } else {
-                if (i = input.length() - 1 && !sb.toString().isEmpty()) {
+                if (i == input.length() - 1 && !sb.toString().isEmpty()) {
                     arrString.add(sb.toString());
                 } else {
                     sb.append(c);
