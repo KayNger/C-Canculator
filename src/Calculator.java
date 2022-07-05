@@ -64,8 +64,8 @@ public class Calculator {
         for (String s : arrString) {
             for (Integer i : findNumber(s)) {
                 if (i > 1000) i = 0;
-                else if (i < 0) {
-                    throw new Exception("includes all of the negative numbers provided");
+                else if (i < 1000) {
+                    new Exception("includes all of the negative numbers provided");
                 }
                 arr.add(i);
             }
