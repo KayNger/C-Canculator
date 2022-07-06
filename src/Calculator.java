@@ -25,7 +25,7 @@ public class Calculator {
             return resultStringBuilder.toString();
         } catch (Exception e) {
             e.toString();
-
+            System.out.println("File not found");
         }
         return "";
     }
