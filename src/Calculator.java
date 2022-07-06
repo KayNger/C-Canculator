@@ -30,7 +30,6 @@ public class Calculator {
         return "";
     }
 
-
     public static int calculate(String input, String[] delimiters) {
         handleCharacter(input, delimiters);
         try {
@@ -95,6 +94,7 @@ public class Calculator {
         }
         return 0;
     }
+
     private static int isDelimiter(String input, String delimiters, int i) {
         if (delimiters.length() > input.length() - i) {
             return 0;
