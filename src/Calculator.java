@@ -65,7 +65,7 @@ public class Calculator {
             for (Integer i : findNumber(s)) {
                 if (i > 1000) i = 0;
                 else if (i < 0) {
-                    new Exception("includes all of the negative numbers provided");
+                    new Exception("includes all of the negatđ ive numbers provided");
                 }
                 arr.add(i);
             }
